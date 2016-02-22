@@ -23,7 +23,13 @@ RUN chmod 664 /etc/mysql/conf.d/my.cnf
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
+RUN rm -r /var/www/html
+COPY ./html /var/www/html
+RUN cd /var/www/html
 RUN chown -R www-data:www-data /var/www/
+RUN cd /var/www/html
+RUN chmod -R o+w /var/www/html/pub/media /var/www/html/pub/static
+RUN chmod -R o+w /var/www/html/var /var/www/html/var/.htaccess /var/www/html/app/etc
 RUN sed -e 's/DirectoryIndex/DirectoryIndex index.php/' < /etc/apache2/mods-enabled/dir.conf > /tmp/foo.sed
 RUN mv /tmp/foo.sed /etc/apache2/mods-enabled/dir.conf
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
