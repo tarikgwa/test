@@ -4,7 +4,6 @@ MAINTAINER Tarik Abouali <aboualitarik@gmail.com>
 # Keep upstart from complaining
 RUN dpkg-divert --local --rename --add /sbin/initctl
 RUN ln -sf /bin/true /sbin/initctl
-#ADD mysql.list /etc/apt/sources.list.d/
 
 # Update
 RUN apt-get update
@@ -27,10 +26,9 @@ ENV APACHE_LOG_DIR /var/log/apache2
 RUN chown -R www-data:www-data /var/www/
 RUN sed -e 's/DirectoryIndex/DirectoryIndex index.php/' < /etc/apache2/mods-enabled/dir.conf > /tmp/foo.sed
 RUN mv /tmp/foo.sed /etc/apache2/mods-enabled/dir.conf
-#RUN php5enmod mcrypt
-RUN a2enmod rewrite
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN chmod 0644 /etc/apache2/sites-available/000-default.conf
+RUN a2enmod rewrite
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php && \
