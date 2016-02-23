@@ -23,7 +23,7 @@ return array (
     array (
       'default' => 
       array (
-        'host' => '52.33.38.112:3307',
+        'host' => '52.33.38.112',
         'dbname' => 'magento',
         'username' => '911labs',
         'password' => '911labs',
