@@ -31,7 +31,7 @@ fi
 
 /usr/sbin/mysqld --bootstrap --verbose=0 $MYSQLD_ARGS < $tfile
 rm -f $tfile
-
+mysql -u 911labs --password=911labs magento < /var/www/html/magento.sql
 # start all the services
 /usr/local/bin/supervisord -n
 supervisorctl reload
