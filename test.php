@@ -175,3 +175,4 @@ class Inbox extends \Magento\Framework\Model\AbstractModel implements NotifierIn
         return $this;
     }
 }
+
