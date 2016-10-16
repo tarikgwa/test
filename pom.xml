@@ -43,12 +43,6 @@ THE SOFTWARE.
     </license>
   </licenses>
 
-  <modules>
-    <module>core</module>
-    <module>war</module>
-    <module>test</module>
-    <module>cli</module>
-  </modules>
 
   <scm>
     <connection>scm:git:git://github.com/jenkinsci/jenkins.git</connection>
